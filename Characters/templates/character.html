@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{ character_name }}
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block background_video %}
+<video autoplay muted loop id="background">
+    <source src="{% static background %}" type="video/mp4">
+</video>
+{% endblock %}
+
+{% block main %}
+<section id="main">
+
+    <section class="content">
+        <h1>{{ character_name }}</h1>
+    </section>
+
+</section>
+{% endblock %}
+
+

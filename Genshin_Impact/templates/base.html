@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %} Genshin Impact {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block style %}
+
+    {% endblock %}
+    <script>
+        var lightModeImageUrl = "{% static 'light-mode.png' %}";
+        var darkModeImageUrl = "{% static 'dark-mode.png' %}";
+        function handleDOMContentLoaded() {
+            document.getElementById("theme-mode").addEventListener("click", change_theme);
+            
+        }
+
+        document.addEventListener("DOMContentLoaded", handleDOMContentLoaded);
+    </script>
+    <script src="{% static 'mode-theme.js'%}"></script>
+    <!-- <script src="{% static 'seizure.js'%}"></script> -->
+</head>
+
+<body>
+    {% block background_video %}
+
+    {% endblock %}
+    <audio id="background_music" src="{% static 'Kafka-Theme.mp3' %}" loop></audio>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'characters' %}">Characters</a></li>
+                <li><a href="#">Artifacts</a></li>
+                <li><a href="#">Lore</a></li>
+                <img id="theme-mode" src="{% static 'dark-mode.png'%}" draggable="false"/>
+            </ul>
+            
+        </nav>
+    </header>
+
+    {% block main %}
+
+    {% endblock %}
+</body>
+
+</html>

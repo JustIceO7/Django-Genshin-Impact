@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Characters
+{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block background_video %}
+<video autoplay muted loop id="background">
+    <source src="{% static 'Sumeru.mp4' %}" type="video/mp4">
+</video>
+{% endblock %}
+
+{% block main %}
+<section id="main">
+
+    <section class="content">
+        <h1>Characters</h1>
+
+        <section class="character-menu">
+            {% for character, data in characters.items %}
+            <section class="character">
+                <img class="character-icon" src="{% static data.icon %}" alt="{{character}}" />
+                <p><a href="{% url 'character' character=data.link_name %}">{{character}}</a></p>
+            </section>
+            {% endfor %}
+        </section>
+    </section>
+
+
+
+</section>
+{% endblock %}
+
+

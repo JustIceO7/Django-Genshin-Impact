@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main%}
+<section id="main">
+
+    <section class="content">
+        <h1>Genshin World</h1>
+    </section>
+    
+</section>
+{% endblock %}
+
+{% block background_video %}
+<video autoplay muted loop id="background">
+    <source src="{% static 'Sumeru.mp4' %}" type="video/mp4">
+</video>
+{% endblock %}
+
+
