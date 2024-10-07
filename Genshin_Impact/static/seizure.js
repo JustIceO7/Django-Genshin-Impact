@@ -3,13 +3,13 @@ function handleDOMContentLoaded() {
     audio.volume = 0.2;
 
     function adjustPlaybackSpeed() {
-        audio.playbackRate = 1.5;
+        audio.playbackRate = 2;
         audio.volume = 0.4;
         setTimeout(() => {
             audio.playbackRate = 1;
             audio.volume = 0.2
             setTimeout(() => {
-                audio.playbackRate = 1.25;
+                audio.playbackRate = 1.5;
                 audio.volume = 0.3
             }, 2000); 
         }, 10000); 

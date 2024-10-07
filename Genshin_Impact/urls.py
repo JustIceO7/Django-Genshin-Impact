@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.home),
     path("home/", views.home, name="home"),    
-    path("characters/", include("Characters.character_urls"), name="characters")
+    path("characters/", include("Characters.character_urls"), name="characters"),
+    path('set-theme-mode/', views.set_theme_mode, name='set_theme_mode'),
 ]
 

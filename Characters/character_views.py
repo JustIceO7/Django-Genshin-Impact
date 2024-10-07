@@ -4,7 +4,6 @@ import json
 
 def characters(request):
     character_data = Character.objects.select_related('images').all()
-    
     characters = {character.name.strip().replace("-"," ").title(): {"icon":character.images.character_icon,"link_name":character.name} for character in character_data}
     return render(request, "characters.html", {"characters":characters})
 

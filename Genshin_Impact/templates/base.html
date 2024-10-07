@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <title>{% block title %} Genshin Impact {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     {% block style %}
@@ -12,9 +13,15 @@
     <script>
         var lightModeImageUrl = "{% static 'light-mode.png' %}";
         var darkModeImageUrl = "{% static 'dark-mode.png' %}";
+        let current_theme = "{{ theme_mode }}"
         function handleDOMContentLoaded() {
             document.getElementById("theme-mode").addEventListener("click", change_theme);
-            
+            // Change background
+            if (document.getElementById("theme-mode").src.endsWith(darkModeImageUrl)) {
+                document.documentElement.style.setProperty("--background_veil", "whitesmoke");
+            } else {
+                document.documentElement.style.setProperty("--background_veil", "lightgrey");
+            }
         }
 
         document.addEventListener("DOMContentLoaded", handleDOMContentLoaded);
@@ -27,7 +34,7 @@
     {% block background_video %}
 
     {% endblock %}
-    <audio id="background_music" src="{% static 'Kafka-Theme.mp3' %}" loop></audio>
+    <audio id="background_music" src="{% static 'Kafka-Theme.mp3' %}" loop ></audio>
     <header>
         <nav class="navbar">
             <ul>
@@ -35,12 +42,15 @@
                 <li><a href="{% url 'characters' %}">Characters</a></li>
                 <li><a href="#">Artifacts</a></li>
                 <li><a href="#">Lore</a></li>
-                <img id="theme-mode" src="{% static 'dark-mode.png'%}" draggable="false"/>
+                {% if theme_mode == "light" %}
+                <img id="theme-mode" src="{% static 'dark-mode.png'%}" draggable="false" />
+                {% else %}
+                <img id="theme-mode" src="{% static 'light-mode.png'%}" draggable="false" />
+                {% endif %}
             </ul>
-            
+
         </nav>
     </header>
-
     {% block main %}
 
     {% endblock %}

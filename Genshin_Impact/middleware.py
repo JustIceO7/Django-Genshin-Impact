@@ -10,3 +10,14 @@ class DisableStaticCacheMiddleware:
             response['Cache-Control'] = 'max-age=0'
 
         return response
+
+class SessionCookieMiddleWare:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if "theme_mode" not in request.session:
+            request.session["theme_mode"] = "dark" 
+
+        response = self.get_response(request)
+        return response
